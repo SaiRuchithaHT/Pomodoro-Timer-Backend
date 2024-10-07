@@ -15,12 +15,11 @@ public class PomodoroSession {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String sessionType; // Study, Short Break, Long Break
-    private int duration; // In minutes
+    private String sessionType; 
+    private int duration; 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    // Constructors, Getters, Setters
     public PomodoroSession() {
     }
     

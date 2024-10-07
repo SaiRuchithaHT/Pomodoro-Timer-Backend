@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.time.LocalDate; 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Service
 public class PomodoroSessionService {
@@ -21,5 +24,13 @@ public class PomodoroSessionService {
     // Get all sessions
     public List<PomodoroSession> getAllSessions() {
         return pomodoroSessionRepository.findAll();
+    }
+
+    // Get all sessions of the day
+    public List<PomodoroSession> getSessionsOfTheDay() {
+        LocalDateTime startOfDay = LocalDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT); // 00:00 today
+        LocalDateTime endOfDay = LocalDateTime.of(LocalDate.now(), LocalTime.MAX); // 23:59 today
+
+        return pomodoroSessionRepository.findAllByStartTimeBetween(startOfDay, endOfDay);
     }
 }
