@@ -1,0 +1,23 @@
+# Gradle files
+.gradle/
+build/
+**/build/
+gradle-app.zip
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+# Gradle specific files
+*.log
+*.lock
+gradle.lockfile
+
+# Java class files
+*.class
+
+# Miscellaneous files
+*.jar
+*.war
+*.ear
+*.db
+*.hprof
+
