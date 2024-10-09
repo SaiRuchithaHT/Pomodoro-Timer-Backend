@@ -19,17 +19,19 @@ public class PomodoroSession {
     private int duration; 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private int timezoneOffset;
+    private String localDate;
+    private String userTimeZone;
 
     public PomodoroSession() {
     }
     
-    public PomodoroSession(String sessionType, int duration, LocalDateTime startTime, LocalDateTime endTime, int timezoneOffset) {
+    public PomodoroSession(String sessionType, int duration, LocalDateTime startTime, LocalDateTime endTime, String localDate, String userTimeZone) {
         this.sessionType = sessionType;
         this.duration = duration;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.timezoneOffset = timezoneOffset;
+        this.localDate = localDate;
+        this.userTimeZone = userTimeZone;
     }
 
     // Getters and Setters
@@ -73,11 +75,19 @@ public class PomodoroSession {
         this.endTime = endTime;
     }
 
-    public int getTimezoneOffset() {
-        return timezoneOffset;
+    public String getLocalDate() {
+        return localDate;
     }
 
-    public void setTimezoneOffset(int timezoneOffset) {
-        this.timezoneOffset = timezoneOffset;
+    public void setLocalDate(String localDate) {
+        this.localDate = localDate;
+    }
+
+    public String getUserTimeZone() {
+        return userTimeZone;
+    }
+
+    public void setUserTimeZone(String userTimeZone) {
+        this.userTimeZone = userTimeZone;
     }
 }

@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 @RestController
 public class PomodoroSessionController {
@@ -26,35 +30,43 @@ public class PomodoroSessionController {
     @PostMapping
     @RequestMapping("/createSession")
     public ResponseEntity<String> createSession(@RequestBody PomodoroSession session) {
-
+        // Check if duration is negative or less thn 1 minute
         if(!(session.getDuration()>0))
             return ResponseEntity.badRequest().body("Invalid session duration");
 
-        int timezoneOffset = session.getTimezoneOffset(); 
-        LocalDateTime startTime = session.getStartTime().minusMinutes(timezoneOffset);
-        LocalDateTime endTime = session.getEndTime().minusMinutes(timezoneOffset);
-        session.setStartTime(startTime);
-        session.setEndTime(endTime);
-
+        
+        LocalDate sessionDate;
+        try {
+            sessionDate = parseLocaldate(session.getLocalDate());
+        } catch (DateTimeParseException e) {
+            return ResponseEntity.badRequest().body("Invalid date format: " + e.getMessage());
+        }
         pomodoroSessionService.saveSession(session);
-        userStatsService.updateUserStats(LocalDate.now());
-
+        userStatsService.updateUserStats(sessionDate);
         return ResponseEntity.ok("Pomodoro session successfully created");
     }
 
     // Get all sessions
     @GetMapping
     @RequestMapping("/getAllSessions")
-    public ResponseEntity<List<PomodoroSession>> getAllSessions() {
+    public ResponseEntity<List<PomodoroSession>> getAllSessions(@RequestParam String userTimeZone) {
         List<PomodoroSession> sessions = pomodoroSessionService.getAllSessions();
+        for (PomodoroSession session : sessions) {
+            ZonedDateTime utcStartTime = session.getStartTime().atZone(ZoneOffset.UTC);
+            ZonedDateTime utcEndTime = session.getEndTime().atZone(ZoneOffset.UTC);
+            ZoneId userZoneId = ZoneId.of(userTimeZone);
+            
+            session.setStartTime(utcStartTime.withZoneSameInstant(userZoneId).toLocalDateTime());
+            session.setEndTime(utcEndTime.withZoneSameInstant(userZoneId).toLocalDateTime());
+        }
         return ResponseEntity.ok(sessions);
     }
 
     // Get Activity Summary
     @GetMapping
     @RequestMapping("/getActivitySummary")
-    public ResponseEntity<SessionStats> getActivitySummary() {
-        int totalStudiedTime = calculateTotalStudiedTime();
+    public ResponseEntity<SessionStats> getActivitySummary(@RequestParam String userTimeZone) {
+        int totalStudiedTime = calculateTotalStudiedTime(userTimeZone);
         UserStats userStats = userStatsService.getSession();
         if (userStats == null) {
             userStats = new UserStats(); 
@@ -65,8 +77,8 @@ public class PomodoroSessionController {
         return ResponseEntity.ok(sessionStats);
     }
 
-    public int calculateTotalStudiedTime(){
-        List<PomodoroSession> sessions = pomodoroSessionService.getSessionsOfTheDay();
+    public int calculateTotalStudiedTime(String userTimeZone){
+        List<PomodoroSession> sessions = pomodoroSessionService.getSessionsOfTheDay(userTimeZone);
         int totalStudiedTime = 0;
         for(int i=0; i<sessions.size(); i++){
             totalStudiedTime += sessions.get(i).getDuration();
@@ -74,4 +86,8 @@ public class PomodoroSessionController {
         return totalStudiedTime;
     }
         
+    public LocalDate parseLocaldate(String sessionDate) throws DateTimeParseException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+        return LocalDate.parse(sessionDate, formatter);
+    }
 }
