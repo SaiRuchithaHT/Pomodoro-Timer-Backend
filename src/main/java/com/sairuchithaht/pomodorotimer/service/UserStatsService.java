@@ -42,6 +42,7 @@ public class UserStatsService {
                 } else {
                     userStats.setStreakCount(1); 
                 }
+                userStats.setLastStudiedDate(sessionDate);
             }
         }
         saveSession(userStats);

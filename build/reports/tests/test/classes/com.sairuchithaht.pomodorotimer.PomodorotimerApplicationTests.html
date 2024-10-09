@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.370s</div>
+<div class="counter">0.374s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">contextLoads()</td>
-<td class="success">0.370s</td>
+<td class="success">0.374s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,8 +87,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>01:58:44.965 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.sairuchithaht.pomodorotimer.PomodorotimerApplicationTests]: PomodorotimerApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-01:58:45.030 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.sairuchithaht.pomodorotimer.PomodorotimerApplication for test class com.sairuchithaht.pomodorotimer.PomodorotimerApplicationTests
+<pre>21:07:10.269 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.sairuchithaht.pomodorotimer.PomodorotimerApplicationTests]: PomodorotimerApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+21:07:10.334 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.sairuchithaht.pomodorotimer.PomodorotimerApplication for test class com.sairuchithaht.pomodorotimer.PomodorotimerApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -98,26 +98,26 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v3.2.10)
 
-2024-10-07T01:58:45.260-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] c.s.p.PomodorotimerApplicationTests      : Starting PomodorotimerApplicationTests using Java 17.0.12 with PID 56518 (started by sairuchithahardagerithammareddy in /Users/sairuchithahardagerithammareddy/Documents-Sai’s MacBook Air/Pomodoro-Timer-Backend/Pomodoro-Timer-Backend/Pomodoro-Timer-Backend)
-2024-10-07T01:58:45.261-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] c.s.p.PomodorotimerApplicationTests      : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-10-07T01:58:45.644-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-07T01:58:45.677-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 2 JPA repository interfaces.
-2024-10-07T01:58:45.946-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-07T01:58:45.976-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.10.Final
-2024-10-07T01:58:45.997-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-10-07T01:58:46.135-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-07T01:58:46.152-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-10-07T01:58:46.260-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5238896f
-2024-10-07T01:58:46.261-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-10-07T01:58:46.288-04:00  WARN 56518 --- [pomodorotimer] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-10-07T01:58:46.289-04:00  WARN 56518 --- [pomodorotimer] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-10-07T01:58:46.789-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-07T01:58:46.833-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-10-07T01:58:47.093-04:00  WARN 56518 --- [pomodorotimer] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-10-07T01:58:47.139-04:00  WARN 56518 --- [pomodorotimer] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Multiple @RequestMapping annotations found on public org.springframework.http.ResponseEntity com.sairuchithaht.pomodorotimer.controller.PomodoroSessionController.getAllSessions(), but only the first will be used: [@org.springframework.web.bind.annotation.RequestMapping(consumes={}, headers={}, method={}, name=&quot;&quot;, params={}, path={&quot;/getAllSessions&quot;}, produces={}, value={&quot;/getAllSessions&quot;}), @org.springframework.web.bind.annotation.GetMapping(consumes={}, headers={}, name=&quot;&quot;, params={}, path={}, produces={}, value={})]
-2024-10-07T01:58:47.143-04:00  WARN 56518 --- [pomodorotimer] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Multiple @RequestMapping annotations found on public org.springframework.http.ResponseEntity com.sairuchithaht.pomodorotimer.controller.PomodoroSessionController.createSession(com.sairuchithaht.pomodorotimer.model.PomodoroSession), but only the first will be used: [@org.springframework.web.bind.annotation.RequestMapping(consumes={}, headers={}, method={}, name=&quot;&quot;, params={}, path={&quot;/createSession&quot;}, produces={}, value={&quot;/createSession&quot;}), @org.springframework.web.bind.annotation.PostMapping(consumes={}, headers={}, name=&quot;&quot;, params={}, path={}, produces={}, value={})]
-2024-10-07T01:58:47.144-04:00  WARN 56518 --- [pomodorotimer] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Multiple @RequestMapping annotations found on public org.springframework.http.ResponseEntity com.sairuchithaht.pomodorotimer.controller.PomodoroSessionController.getActivitySummary(), but only the first will be used: [@org.springframework.web.bind.annotation.RequestMapping(consumes={}, headers={}, method={}, name=&quot;&quot;, params={}, path={&quot;/getActivitySummary&quot;}, produces={}, value={&quot;/getActivitySummary&quot;}), @org.springframework.web.bind.annotation.GetMapping(consumes={}, headers={}, name=&quot;&quot;, params={}, path={}, produces={}, value={})]
-2024-10-07T01:58:47.328-04:00  INFO 56518 --- [pomodorotimer] [    Test worker] c.s.p.PomodorotimerApplicationTests      : Started PomodorotimerApplicationTests in 2.209 seconds (process running for 2.918)
+2024-10-08T21:07:10.568-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] c.s.p.PomodorotimerApplicationTests      : Starting PomodorotimerApplicationTests using Java 17.0.12 with PID 75563 (started by sairuchithahardagerithammareddy in /Users/sairuchithahardagerithammareddy/Documents-Sai’s MacBook Air/Pomodoro-Timer-Backend/Pomodoro-Timer-Backend/Pomodoro-Timer-Backend)
+2024-10-08T21:07:10.569-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] c.s.p.PomodorotimerApplicationTests      : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-10-08T21:07:10.961-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-08T21:07:11.001-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 2 JPA repository interfaces.
+2024-10-08T21:07:11.286-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-08T21:07:11.321-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.10.Final
+2024-10-08T21:07:11.343-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-08T21:07:11.489-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-08T21:07:11.506-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-08T21:07:11.691-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e321d9d
+2024-10-08T21:07:11.693-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-08T21:07:11.743-04:00  WARN 75563 --- [pomodorotimer] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-08T21:07:11.744-04:00  WARN 75563 --- [pomodorotimer] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-08T21:07:12.279-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-08T21:07:12.334-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-08T21:07:12.606-04:00  WARN 75563 --- [pomodorotimer] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-08T21:07:12.653-04:00  WARN 75563 --- [pomodorotimer] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Multiple @RequestMapping annotations found on public org.springframework.http.ResponseEntity com.sairuchithaht.pomodorotimer.controller.PomodoroSessionController.getAllSessions(), but only the first will be used: [@org.springframework.web.bind.annotation.RequestMapping(consumes={}, headers={}, method={}, name=&quot;&quot;, params={}, path={&quot;/getAllSessions&quot;}, produces={}, value={&quot;/getAllSessions&quot;}), @org.springframework.web.bind.annotation.GetMapping(consumes={}, headers={}, name=&quot;&quot;, params={}, path={}, produces={}, value={})]
+2024-10-08T21:07:12.658-04:00  WARN 75563 --- [pomodorotimer] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Multiple @RequestMapping annotations found on public org.springframework.http.ResponseEntity com.sairuchithaht.pomodorotimer.controller.PomodoroSessionController.createSession(com.sairuchithaht.pomodorotimer.model.PomodoroSession), but only the first will be used: [@org.springframework.web.bind.annotation.RequestMapping(consumes={}, headers={}, method={}, name=&quot;&quot;, params={}, path={&quot;/createSession&quot;}, produces={}, value={&quot;/createSession&quot;}), @org.springframework.web.bind.annotation.PostMapping(consumes={}, headers={}, name=&quot;&quot;, params={}, path={}, produces={}, value={})]
+2024-10-08T21:07:12.658-04:00  WARN 75563 --- [pomodorotimer] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Multiple @RequestMapping annotations found on public org.springframework.http.ResponseEntity com.sairuchithaht.pomodorotimer.controller.PomodoroSessionController.getActivitySummary(), but only the first will be used: [@org.springframework.web.bind.annotation.RequestMapping(consumes={}, headers={}, method={}, name=&quot;&quot;, params={}, path={&quot;/getActivitySummary&quot;}, produces={}, value={&quot;/getActivitySummary&quot;}), @org.springframework.web.bind.annotation.GetMapping(consumes={}, headers={}, name=&quot;&quot;, params={}, path={}, produces={}, value={})]
+2024-10-08T21:07:12.868-04:00  INFO 75563 --- [pomodorotimer] [    Test worker] c.s.p.PomodorotimerApplicationTests      : Started PomodorotimerApplicationTests in 2.443 seconds (process running for 3.218)
 </pre>
 </span>
 </div>
@@ -129,7 +129,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10.2</a> at Oct 7, 2024, 1:58:47 AM</p>
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at Oct 8, 2024, 9:07:13 PM</p>
 </div>
 </div>
 </body>

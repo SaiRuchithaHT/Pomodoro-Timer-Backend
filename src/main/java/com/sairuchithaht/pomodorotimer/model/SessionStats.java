@@ -1,7 +1,5 @@
 package com.sairuchithaht.pomodorotimer.model;
 
-import java.util.Set;
-
 public class SessionStats {
     private int hoursFocused;
     private int minutesFocused;

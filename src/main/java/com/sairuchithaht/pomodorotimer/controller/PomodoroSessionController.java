@@ -9,8 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @RestController
 public class PomodoroSessionController {
@@ -25,10 +26,20 @@ public class PomodoroSessionController {
     @PostMapping
     @RequestMapping("/createSession")
     public ResponseEntity<String> createSession(@RequestBody PomodoroSession session) {
-        PomodoroSession savedSession = pomodoroSessionService.saveSession(session);
-        // Update user stats when a session is created
+
+        if(!(session.getDuration()>0))
+            return ResponseEntity.badRequest().body("Invalid session duration");
+
+        int timezoneOffset = session.getTimezoneOffset(); 
+        LocalDateTime startTime = session.getStartTime().minusMinutes(timezoneOffset);
+        LocalDateTime endTime = session.getEndTime().minusMinutes(timezoneOffset);
+        session.setStartTime(startTime);
+        session.setEndTime(endTime);
+
+        pomodoroSessionService.saveSession(session);
         userStatsService.updateUserStats(LocalDate.now());
-        return ResponseEntity.ok("Session created ");
+
+        return ResponseEntity.ok("Pomodoro session successfully created");
     }
 
     // Get all sessions
