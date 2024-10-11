@@ -31,22 +31,17 @@ public class PomodoroSessionService {
 
     // Get all sessions of the day
     public List<PomodoroSession> getSessionsOfTheDay(String userTimeZone) {
-    // Get the user's time zone
     ZoneId zoneId = ZoneId.of(userTimeZone);
 
-    // Get the start and end of the day in the user's time zone
     ZonedDateTime startOfDayUserTimeZone = ZonedDateTime.of(LocalDate.now(zoneId), LocalTime.MIDNIGHT, zoneId); // 00:00 in user time zone
     ZonedDateTime endOfDayUserTimeZone = ZonedDateTime.of(LocalDate.now(zoneId), LocalTime.MAX, zoneId); // 23:59 in user time zone
 
-    // Convert to UTC
     ZonedDateTime startOfDayUTC = startOfDayUserTimeZone.withZoneSameInstant(ZoneOffset.UTC);
     ZonedDateTime endOfDayUTC = endOfDayUserTimeZone.withZoneSameInstant(ZoneOffset.UTC);
 
-    // Get LocalDateTime for querying the database
     LocalDateTime startOfDay = startOfDayUTC.toLocalDateTime();
     LocalDateTime endOfDay = endOfDayUTC.toLocalDateTime();
 
-    // Query the database for sessions between start and end of the day in UTC
     return pomodoroSessionRepository.findAllByStartTimeBetween(startOfDay, endOfDay);
 }
 
