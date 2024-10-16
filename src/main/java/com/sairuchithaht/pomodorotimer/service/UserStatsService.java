@@ -20,11 +20,12 @@ public class UserStatsService {
     }
 
     // Method to update user stats
-    public void updateUserStats(LocalDate sessionDate) {
+    public void updateUserStats(LocalDate sessionDate, String username) {
 
-        UserStats userStats = getSession(); 
+        UserStats userStats = getSession(username); 
         if(userStats == null) {
             userStats = new UserStats();
+            userStats.setUsername(username);
             userStats.setLastStudiedDate(sessionDate);
             userStats.setDaysAccessed(1);
             userStats.setStreakCount(1);
@@ -42,6 +43,7 @@ public class UserStatsService {
                 } else {
                     userStats.setStreakCount(1); 
                 }
+                userStats.setUsername(username);
                 userStats.setLastStudiedDate(sessionDate);
             }
         }
@@ -49,8 +51,8 @@ public class UserStatsService {
     }
 
     // Get all sessions
-    public UserStats getSession() {
-        List<UserStats> userStatsList = userStatsRepository.findAll();
+    public UserStats getSession(String username) {
+        List<UserStats> userStatsList = userStatsRepository.findByUsername(username);
         if (userStatsList.isEmpty()) {
             return null; 
         }

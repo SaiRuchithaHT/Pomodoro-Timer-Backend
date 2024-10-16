@@ -9,6 +9,6 @@ import java.time.LocalDateTime;
 
 @Repository
 public interface PomodoroSessionRepository extends JpaRepository<PomodoroSession, Long> {
-    // Custom query to get all sessions that started on the current day
-    List<PomodoroSession> findAllByStartTimeBetween(LocalDateTime startOfDay, LocalDateTime endOfDay);
+    List<PomodoroSession> findByUsername(String username);
+    List<PomodoroSession> findAllByUsernameAndStartTimeBetween(String username, LocalDateTime start, LocalDateTime end);
 }

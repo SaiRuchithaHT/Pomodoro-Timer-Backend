@@ -30,19 +30,18 @@ public class PomodoroSessionService {
     }
 
     // Get all sessions of the day
-    public List<PomodoroSession> getSessionsOfTheDay(String userTimeZone) {
-    ZoneId zoneId = ZoneId.of(userTimeZone);
+    public List<PomodoroSession> getSessionsOfTheDay(String userTimeZone, String username) {
+        ZoneId zoneId = ZoneId.of(userTimeZone);
 
-    ZonedDateTime startOfDayUserTimeZone = ZonedDateTime.of(LocalDate.now(zoneId), LocalTime.MIDNIGHT, zoneId); // 00:00 in user time zone
-    ZonedDateTime endOfDayUserTimeZone = ZonedDateTime.of(LocalDate.now(zoneId), LocalTime.MAX, zoneId); // 23:59 in user time zone
+        ZonedDateTime startOfDayUserTimeZone = ZonedDateTime.of(LocalDate.now(zoneId), LocalTime.MIDNIGHT, zoneId); // 00:00 in user time zone
+        ZonedDateTime endOfDayUserTimeZone = ZonedDateTime.of(LocalDate.now(zoneId), LocalTime.MAX, zoneId); // 23:59 in user time zone
 
-    ZonedDateTime startOfDayUTC = startOfDayUserTimeZone.withZoneSameInstant(ZoneOffset.UTC);
-    ZonedDateTime endOfDayUTC = endOfDayUserTimeZone.withZoneSameInstant(ZoneOffset.UTC);
+        ZonedDateTime startOfDayUTC = startOfDayUserTimeZone.withZoneSameInstant(ZoneOffset.UTC);
+        ZonedDateTime endOfDayUTC = endOfDayUserTimeZone.withZoneSameInstant(ZoneOffset.UTC);
 
-    LocalDateTime startOfDay = startOfDayUTC.toLocalDateTime();
-    LocalDateTime endOfDay = endOfDayUTC.toLocalDateTime();
+        LocalDateTime startOfDay = startOfDayUTC.toLocalDateTime();
+        LocalDateTime endOfDay = endOfDayUTC.toLocalDateTime();
 
-    return pomodoroSessionRepository.findAllByStartTimeBetween(startOfDay, endOfDay);
-}
-
+        return pomodoroSessionRepository.findAllByUsernameAndStartTimeBetween(username, startOfDay, endOfDay);
+    }
 }

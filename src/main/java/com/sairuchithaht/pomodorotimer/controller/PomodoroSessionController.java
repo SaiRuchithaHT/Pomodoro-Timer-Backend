@@ -29,20 +29,19 @@ public class PomodoroSessionController {
     // Create a new session
     @PostMapping
     @RequestMapping("/createSession")
-    public ResponseEntity<String> createSession(@RequestBody PomodoroSession session) {
-        // Check if duration is negative or less thn 1 minute
+    public ResponseEntity<String> createSession(@RequestBody PomodoroSession session, @RequestParam String username) {
         if(!(session.getDuration()>0))
             return ResponseEntity.badRequest().body("Invalid session duration");
 
-        
         LocalDate sessionDate;
         try {
             sessionDate = parseLocaldate(session.getLocalDate());
         } catch (DateTimeParseException e) {
             return ResponseEntity.badRequest().body("Invalid date format: " + e.getMessage());
         }
+        session.setUsername(username);
         pomodoroSessionService.saveSession(session);
-        userStatsService.updateUserStats(sessionDate);
+        userStatsService.updateUserStats(sessionDate, session.getUsername());
         return ResponseEntity.ok("Pomodoro session successfully created");
     }
 
@@ -65,9 +64,9 @@ public class PomodoroSessionController {
     // Get Activity Summary
     @GetMapping
     @RequestMapping("/getActivitySummary")
-    public ResponseEntity<SessionStats> getActivitySummary(@RequestParam String userTimeZone) {
-        int totalStudiedTime = calculateTotalStudiedTime(userTimeZone);
-        UserStats userStats = userStatsService.getSession();
+    public ResponseEntity<SessionStats> getActivitySummary(@RequestParam String userTimeZone, @RequestParam String username) {
+        int totalStudiedTime = calculateTotalStudiedTime(userTimeZone, username);
+        UserStats userStats = userStatsService.getSession(username);
         if (userStats == null) {
             userStats = new UserStats(); 
             userStats.setDaysAccessed(0); 
@@ -77,8 +76,8 @@ public class PomodoroSessionController {
         return ResponseEntity.ok(sessionStats);
     }
 
-    public int calculateTotalStudiedTime(String userTimeZone){
-        List<PomodoroSession> sessions = pomodoroSessionService.getSessionsOfTheDay(userTimeZone);
+    public int calculateTotalStudiedTime(String userTimeZone, String username){
+        List<PomodoroSession> sessions = pomodoroSessionService.getSessionsOfTheDay(userTimeZone, username);
         int totalStudiedTime = 0;
         for(int i=0; i<sessions.size(); i++){
             totalStudiedTime += sessions.get(i).getDuration();

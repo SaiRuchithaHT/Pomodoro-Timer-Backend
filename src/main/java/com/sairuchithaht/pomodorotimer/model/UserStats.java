@@ -17,15 +17,17 @@ public class UserStats {
 
     private LocalDate lastStudiedDate;  
     private int streakCount;            
-    private int daysAccessed;           
+    private int daysAccessed;   
+    private String username;        
 
     
     public UserStats() {}
 
-    public UserStats(LocalDate lastStudiedDate, int streakCount, int daysAccessed) {
+    public UserStats(LocalDate lastStudiedDate, int streakCount, int daysAccessed, String username) {
         this.lastStudiedDate = lastStudiedDate;
         this.streakCount = streakCount;
         this.daysAccessed = daysAccessed;
+        this.username = username;
     }
 
     public Long getId() {
@@ -58,5 +60,13 @@ public class UserStats {
 
     public void setDaysAccessed(int daysAccessed) {
         this.daysAccessed = daysAccessed;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
