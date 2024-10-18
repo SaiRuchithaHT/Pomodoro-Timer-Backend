@@ -32,3 +32,11 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.named('jar') {
+    enabled = true 
+}
+
+bootJar {
+    archiveFileName = 'pomodoro-app.jar' 
+}
