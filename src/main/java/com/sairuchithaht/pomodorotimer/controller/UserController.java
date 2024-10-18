@@ -14,8 +14,10 @@ public class UserController {
 
     @PostMapping("/signup")
     public ResponseEntity<String> signUp(@RequestBody User user) {
-        if (userRepository.findByEmail(user.getEmail()) != null || userRepository.findByUsername(user.getUsername()) != null) {
-            return ResponseEntity.badRequest().body("User with this email or username already exists");
+        if (userRepository.findByEmail(user.getEmail()) != null){
+            return ResponseEntity.badRequest().body("User with this email already exists");
+        } else if(userRepository.findByUsername(user.getUsername()) != null) {
+            return ResponseEntity.badRequest().body("User with this username already exists");
         }
 
         userRepository.save(user);
