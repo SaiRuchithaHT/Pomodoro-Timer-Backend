@@ -21,3 +21,5 @@ gradle.lockfile
 *.db
 *.hprof
 
+# macOS specific files
+.DS_Store
