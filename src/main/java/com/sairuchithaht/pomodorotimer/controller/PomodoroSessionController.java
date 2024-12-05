@@ -26,7 +26,7 @@ public class PomodoroSessionController {
     @Autowired
     private UserStatsService userStatsService;
 
-    @GetMapping("/") // Ensure there's a mapping for the root URL
+    @GetMapping("/") 
     public String home() {
         return "Welcome to the Pomodoro Timer!";
     }
