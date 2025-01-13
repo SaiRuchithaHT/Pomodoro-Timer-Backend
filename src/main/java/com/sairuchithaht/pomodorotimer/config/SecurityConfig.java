@@ -20,7 +20,7 @@ public class SecurityConfig {
             .and()
             .csrf().disable() // Disable CSRF for testing
             .authorizeHttpRequests()
-            .requestMatchers("/createSession", "/getAllSessions", "/getActivitySummary", "/signup", "/login").permitAll() // Replace antMatchers with requestMatchers
+            .requestMatchers("/createSession", "/getAllSessions", "/getActivitySummary", "/signup", "/login").permitAll() 
             .anyRequest().authenticated()
             .and()
             .httpBasic(); // Enable basic authentication
@@ -30,7 +30,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("https://sairuchithaht-pomodoro-timer.vercel.app"));
+        configuration.setAllowedOrigins(Arrays.asList("http://127.0.0.1:5500"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);

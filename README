@@ -1,0 +1,20 @@
+Pomodoro Timer Backend Application
+----------------------------------
+Welcome to the Pomodoro Timer Backend! This application powers the backend logic and data storage for the Pomodoro Timer, helping users manage their time effectively by tracking work and break sessions.
+
+Features
+--------
+1. RESTful API to manage Pomodoro sessions and user statistics
+2. Secure user authentication and session management
+3. Integration with a MySQL database for storing user data and session details
+4. Support for time zone adjustments to display local session times
+5. Optimized for high performance and scalability
+
+Tech Stack
+----------
+Backend: Java, Spring Boot
+Database: MySQL
+Build Tool: Maven
+APIs: RESTful APIs using Spring MVC
+Deployment: Docker (optional for containerization)
+Version Control: Git
