@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y wget
 RUN wget https://services.gradle.org/distributions/gradle-7.6-bin.zip
-RUN unzip gradle-7.6-bin.zip
+RUN apt-get update && apt-get install -y wget unzip
 RUN mv gradle-7.6 /opt/gradle
 ENV PATH="/opt/gradle/bin:${PATH}"
 
