@@ -15,16 +15,15 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-            .cors() // Enable CORS
-            .and()
-            .csrf().disable() // Disable CSRF for testing
-            .authorizeHttpRequests()
-            .requestMatchers("/createSession", "/getAllSessions", "/getActivitySummary", "/signup", "/login").permitAll() 
-            .anyRequest().authenticated()
-            .and()
-            .httpBasic(); // Enable basic authentication
-        return http.build();
+        return http
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+            .csrf(csrf -> csrf.disable()) // Disable CSRF for testing
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/createSession", "/getAllSessions", "/getActivitySummary", "/signup", "/login").permitAll()
+                .anyRequest().authenticated()
+            )
+            .httpBasic(httpBasic -> {}) // Enable basic authentication
+            .build();
     }
 
     @Bean

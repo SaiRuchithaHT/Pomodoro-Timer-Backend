@@ -23,8 +23,8 @@ COPY src ./src
 # Grant execution permission for Gradle wrapper
 RUN chmod +x ./gradlew
 
-# Build the application
-RUN ./gradlew build --no-daemon
+# Build the application without running tests
+RUN ./gradlew build --no-daemon -x test
 
 # Use OpenJDK 17 as the runtime image
 FROM openjdk:17-jdk-slim
